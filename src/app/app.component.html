@@ -13,7 +13,7 @@
 <div *ngIf = "isAdminLoggiedIn">
   <nz-header class="main-header" nz-row nztype="flex" class="custom-navbar">
     <div class="navbar-title">
-      <a routerLink="/login">Admin Logged In</a>
+      <a routerLink="/login">Admin Account</a>
     </div>
     <div class="nav-links">
       <a nz-button nzType="link" routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a>
@@ -26,7 +26,7 @@
 <div *ngIf = "isCustomerLoggedIn">
   <nz-header class="main-header" nz-row nztype="flex" class="custom-navbar">
     <div class="navbar-title">
-      <a routerLink="/login">Customer Logged In</a>
+      <a routerLink="/login">Customer Account</a>
     </div>
     <div class="nav-links">
       <a nz-button nzType="link" routerLink="/customer/dashboard" routerLinkActive="active">Dashboard</a>

@@ -3,33 +3,45 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { StorageService } from '../../../auth/services/storage/storage.service';
 
-const BASE_URL = ["http://localhost:8080"];
+const BASE_URL = ["http://localhost:8080/api/admin"];
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
 
-  constructor(  
+  constructor(
     private http: HttpClient
   ) { }
 
   postCar(postCarRequest: any): Observable<any> {
-    return this.http.post(BASE_URL + "/api/admin/car", postCarRequest, {
+    return this.http.post(BASE_URL + "/car", postCarRequest, {
       headers: this.createAuthorizationHeader()
     });
   }
 
   getAllCars(): Observable<any> {
-    return this.http.get(BASE_URL + "/api/admin/cars", {
+    return this.http.get(BASE_URL + "/cars", {
+      headers: this.createAuthorizationHeader()
+    });
+  }
+
+  getCarbyId(id: number): Observable<any> {
+    return this.http.get(BASE_URL + "/cars/" + id, {
       headers: this.createAuthorizationHeader()
     });
   }
 
   deleteCar(id: number): Observable<any> {
-    return this.http.delete(BASE_URL + "/api/admin/cars/" + id, {
+    return this.http.delete(BASE_URL + "/cars/" + id, {
       headers: this.createAuthorizationHeader()
     });
+  }
+
+  updateCar(id: number, carResponse: any): Observable<any> {
+    return this.http.put(BASE_URL + "/cars/" + id, carResponse, {
+      headers: this.createAuthorizationHeader()
+    })
   }
 
   createAuthorizationHeader(): HttpHeaders {
