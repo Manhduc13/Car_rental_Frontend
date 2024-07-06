@@ -24,6 +24,18 @@ export class CustomerService {
     });
   }
 
+  bookACar(bookCarRequest: any): Observable<any>{
+    return this.http.post(BASE_URL + "/cars/book", bookCarRequest ,{
+      headers: this.createAuthorizationHeader()
+    });
+  }
+
+  getBookingsByUserId(): Observable<any>{
+    return this.http.get(BASE_URL + "/cars/bookings/" + StorageService.getUserId(),{
+      headers: this.createAuthorizationHeader()
+    });
+  } 
+
   createAuthorizationHeader(): HttpHeaders {
     let authHeaders: HttpHeaders = new HttpHeaders();
     return authHeaders.set(
