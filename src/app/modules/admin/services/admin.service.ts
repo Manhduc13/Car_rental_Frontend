@@ -15,7 +15,7 @@ export class AdminService {
   ) { }
 
   postCar(postCarRequest: any): Observable<any> {
-    return this.http.post(BASE_URL + "/car", postCarRequest, {
+    return this.http.post(BASE_URL + "/cars/post", postCarRequest, {
       headers: this.createAuthorizationHeader()
     });
   }
@@ -42,6 +42,26 @@ export class AdminService {
     return this.http.put(BASE_URL + "/cars/" + id, carResponse, {
       headers: this.createAuthorizationHeader()
     })
+  }
+
+  getBookings(): Observable<any> {
+    return this.http.get(BASE_URL + "/cars/bookings", {
+      headers: this.createAuthorizationHeader()
+    })
+  }
+
+  changeBookingStatus(id: number, status: string): Observable<any> {
+    const url = `${BASE_URL}/cars/bookings/${id}/${status}`;
+    const headers = this.createAuthorizationHeader();
+
+    return this.http.get(url, { headers });
+  }
+
+  searchCar(searchCarRequest: any): Observable<any> {
+    const url = `${BASE_URL}/cars/search`;
+    return this.http.post(url, searchCarRequest, {
+      headers: this.createAuthorizationHeader()
+    });
   }
 
   createAuthorizationHeader(): HttpHeaders {

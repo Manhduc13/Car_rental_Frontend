@@ -17,7 +17,9 @@
     </div>
     <div class="nav-links">
       <a nz-button nzType="link" routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a>
-      <a nz-button nzType="link" routerLink="/admin/car" routerLinkActive="active">Post Car</a>
+      <a nz-button nzType="link" routerLink="/admin/cars/post" routerLinkActive="active">Post Car</a>
+      <a nz-button nzType="link" routerLink="/admin/cars/bookings" routerLinkActive="active">Bookings</a>
+      <a nz-button nzType="link" routerLink="/admin/cars/search" routerLinkActive="active">Search Car</a>
       <a nz-button nzType="link" (click)="logout()" routerLinkActive="active">Logout</a>
     </div>
   </nz-header>
@@ -30,7 +32,8 @@
     </div>
     <div class="nav-links">
       <a nz-button nzType="link" routerLink="/customer/dashboard" routerLinkActive="active">Dashboard</a>
-      <a nz-button nzType="link" routerLink="/customer/my_bookings" routerLinkActive="active">My Bookings</a>
+      <a nz-button nzType="link" routerLink="/customer/cars/my_bookings" routerLinkActive="active">My Bookings</a>
+      <a nz-button nzType="link" routerLink="/customer/cars/search" routerLinkActive="active">Search Car</a>
       <a nz-button nzType="link" (click)="logout()" routerLinkActive="active">Logout</a>
     </div>
   </nz-header>

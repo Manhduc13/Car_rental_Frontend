@@ -1,0 +1,41 @@
+<nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Working...">
+    <nz-table #basicTable [nzData]="bookings" [nzPageSize]="20" [nzShowPagination]="'false'">
+        <thead>
+            <tr>
+                <th style="font-weight: bolder; color: #003973;">UserEmail</th>
+                <th style="font-weight: bolder; color: #003973;">From Date</th>
+                <th style="font-weight: bolder; color: #003973;">To Date</th>
+                <th style="font-weight: bolder; color: #003973;">Days</th>
+                <th style="font-weight: bolder; color: #003973;">Price</th>
+                <th style="font-weight: bolder; color: #003973;">Status</th>
+                <th style="font-weight: bolder; color: #003973;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let booking of basicTable.data">
+                <td>{{booking.userEmail}}</td>
+                <td>{{booking.startDate | date: 'MMM d, y'}}</td>
+                <td>{{booking.endDate | date: 'MMM d, y'}}</td>
+                <td>{{booking.days}}</td>
+                <td>{{booking.price}}</td>
+                <td>
+                    <strong [ngStyle]="{
+                        'color': booking.status === 'APPROVED' ? 'green' :
+                                 booking.status === 'REJECTED' ? 'red' :
+                                 booking.status === 'PENDING' ? 'yellow' : ''
+                      }">
+                        {{ booking.status }}
+                    </strong>
+                </td>
+                <td>
+                    <span *ngIf = "booking.status == 'PENDING'">
+                        <button style="margin-left: 10px;" nzSize = "small" nz-button nzType="primary"
+                            (click)="changeBookingStatus(booking.id, 'Approve')">Approve</button>
+                        <button style="margin-left: 10px;" nzSize = "small" nz-button nzType="primary"
+                            (click)="changeBookingStatus(booking.id, 'Reject')" nzDanger="">Reject</button>
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </nz-table>
+</nz-spin>

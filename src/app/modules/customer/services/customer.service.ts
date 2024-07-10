@@ -34,7 +34,14 @@ export class CustomerService {
     return this.http.get(BASE_URL + "/cars/bookings/" + StorageService.getUserId(),{
       headers: this.createAuthorizationHeader()
     });
-  } 
+  }
+
+  searchCar(searchCarRequest: any): Observable<any> {
+    const url = `${BASE_URL}/cars/search`;
+    return this.http.post(url, searchCarRequest, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
 
   createAuthorizationHeader(): HttpHeaders {
     let authHeaders: HttpHeaders = new HttpHeaders();

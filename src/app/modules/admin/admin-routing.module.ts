@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { PostCarComponent } from './components/post-car/post-car.component';
 import { UpdateCarComponent } from './components/update-car/update-car.component';
+import { GetBookingsComponent } from './components/get-bookings/get-bookings.component';
+import { SearchCarComponent } from './components/search-car/search-car.component';
 
 const routes: Routes = [
   {
@@ -10,12 +12,20 @@ const routes: Routes = [
     component: AdminDashboardComponent
   },
   {
-    path: "car",
+    path: "cars/post",
     component: PostCarComponent
   },
   {
     path: "car/:id",
     component: UpdateCarComponent
+  },
+  {
+    path: "cars/bookings",
+    component: GetBookingsComponent
+  },
+  {
+    path: "cars/search",
+    component: SearchCarComponent
   }
 ];
 
